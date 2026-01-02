@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        margin: 0;
+        font-family: sans-serif;
+      }
+      .spacer {
+        height: 5vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f0f0f0;
+      }
+      .horizontal-container {
+        height: 400vh; /* Plus ce chiffre est grand, plus le scroll sera lent */
+        position: relative;
+      }
+      .sticky-wrapper {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        width: 100%;
+        overflow: hidden; /* Cache ce qui dépasse */
+        display: flex;
+        align-items: center;
+      }
+
+      .scrolling-image {
+        height: 100vh; /* L'image prend toute la hauteur */
+        width: auto; /* Garde ses proportions */
+        will-change: transform;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <section class="horizontal-container">
+        <section class="spacer">
+          Défilez vers le bas pour voir l'œuvre...
+        </section>
+        <div class="sticky-wrapper">
+          <img src="img/Vivi1.png" alt="Art" class="scrolling-image" />
+        </div>
+      </section>
+      <section class="spacer">Suite du site (section suivante)</section>
+    </div>
+    <script>
+      window.addEventListener("scroll", () => {
+        const container = document.querySelector(".horizontal-container");
+        const sticky = document.querySelector(".sticky-wrapper");
+        const image = document.querySelector(".scrolling-image");
+
+        // Calcul de la progression (0 à 1)
+        const offsetTop = container.offsetTop;
+        const height = container.offsetHeight - window.innerHeight;
+        let percentage = (window.scrollY - offsetTop) / height;
+
+        // Limiter entre 0 et 1
+        percentage = Math.max(0, Math.min(1, percentage));
+
+        // Calcul du déplacement maximum (largeur image - largeur écran)
+        const maxMove = image.offsetWidth - window.innerWidth;
+
+        // Appliquer la transformation
+        image.style.transform = `translateX(${-percentage * maxMove}px)`;
+      });
+    </script>
+  </body>
+</html>

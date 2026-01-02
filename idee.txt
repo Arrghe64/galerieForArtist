@@ -1,0 +1,39 @@
+<div class="header-container">
+      <header id="header" class="?">
+        <div class="logo">
+          <img src="" alt="" class="logo" />
+        </div>
+        <nav class="menu-main-container">
+          <ul id="menu-main">
+            <li id="nav-0"><a href="#">About</a></li>
+            <li id="nav-1"><a href="#">News</a></li>
+            <li id="nav-2"><a href="#">Buy</a></li>
+            <li id="nav-3"><a href="#">Contact</a></li>
+            <li id="nav-4"><a href="#">Other</a></li>
+          </ul>
+        </nav>
+        <div class="nav-icons">
+          <div class="nav-search">
+            <!-- icone loupe -->
+          </div>
+        </div>
+      </header>
+      <div class="nav-mobile">
+        <div class="nav-hamburger">
+          <div class="menu-mobile">
+            <ul id="menu-main">
+              <li id="nav-5"><a href="#">About</a></li>
+              <li id="nav-6"><a href="#">News</a></li>
+              <li id="nav-7"><a href="#">Buy</a></li>
+              <li id="nav-8"><a href="#">Contact</a></li>
+              <li id="nav-9"><a href="#">Other</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="full hero"></div>
+
+
+    
+J'ai une grande image avec un effet de déplacement horizontal. Je voudrai que ce soit ma section HERO.

@@ -1,0 +1,150 @@
+body { margin: 0; font-family: sans-serif; }
+
+/** SECTION MENU **/
+ 
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 50px;
+    z-index: 100;
+    transition: background 0.3s erase;
+
+    /* Crée un effet de vitre sablée qui floute l'œuvre d'art dessous */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); /* Pour Safari */
+    
+    /* On ajoute un léger fond sombre pour uniformiser */
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.main-header.scrolled-past {
+    /* background: rgb(255, 255, 255); */
+    color: #000;
+}
+.main-header.scrolled-past a 
+.main-header.scrolled-past .mobile-menu-btn {
+    color: #000;
+    background-color: #000;
+}
+
+/* Style du Menu Desktop */
+.nav-menu {
+    height: 30px;
+}
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0 100px 0 0;
+    padding: 0;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    transition: opacity 0.3s;
+}
+.nav-menu a:hover {
+    opacity: 0.7;
+}
+
+.black-char {
+    color:#000
+}
+
+/* Bouton Hamburger (caché sur Desktop) */
+.mobile-menu-btn {
+    display: none; /* On l'affichera avec les media queries */
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+}
+.mobile-menu-btn span {
+    display: block;
+    width: 30px;
+    height: 2px;
+    background-color: white;
+}
+
+/** SECTION HERO / BIOGRAPHIE **/
+/* On s'assure que le Hero prend toute la place dès le début */
+.horizontal-container {
+    height: 400vh; /* Plus ce chiffre est grand, plus le scroll sera lent */
+    position: relative;
+    background-color: #000; /* Fond noir pour faire ressortir l'œuvre */
+}
+.sticky-wrapper {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden; /* Cache ce qui dépasse */
+    display: flex;
+    align-items: center;
+    img {
+        margin-top: 78px;
+        height: 92vh;
+    }
+}
+
+/* Titre par-dessus l'image */
+.hero-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10; /* Pour être au-dessus de l'image */
+    color: white;
+    text-align: center;
+    pointer-events: none; /* Permet de scroller même si on est sur le texte */   
+    /* Paramètres : x(0) y(0) flou(10px) couleur(noir avec opacité) */
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.9), 
+                 0 0 5px rgba(0, 0, 0, 0.5);
+
+}
+
+.hero-overlay h1 {
+    font-size: 8rem;
+    margin: 0;
+    letter-spacing: 0px;
+    /* text-shadow: 0 0 20px rgba(0,0,0,0.5); */
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+}
+.hero-overlay h2 {
+    font-size: 6rem;
+}
+
+.bio-text {
+    /* Caché au départ */
+    /* opacity: 0;  */
+    font-size: 2rem;
+    line-height: 1.6;
+    margin-top: 100vh;
+    border-radius: 15px;
+
+    /* Crée un effet de vitre sablée qui floute l'œuvre d'art dessous */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); /* Pour Safari */
+    
+    /* On ajoute un léger fond sombre pour uniformiser */
+    background-color: rgba(0, 0, 0, 0.2); 
+}
+
+/* La section qui suit l'œuvre */
+.content-section {
+    min-height: 100vh;
+    background: rgb(255, 255, 255);
+    padding: 100px 10%;
+    position: relative;
+    z-index: 20; /* Pour passer par-dessus le container sticky à la fin */
+}
