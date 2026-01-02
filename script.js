@@ -6,6 +6,10 @@ window.addEventListener("scroll", () => {
   const header = document.querySelector(".main-header");
   const blackMenu = document.querySelector(".nav-menu a");
   const nextSection = document.querySelector(".content-section");
+  const sliderViewport = document.querySelector(".image-slider-viewport");
+  const imageStack = document.querySelector(".image-stack");
+  const images = document.querySelectorAll(".image-stack img");
+  let currentIndex = 0;
 
   // 1. Position du conteneur par rapport au haut de la page
   const offsetTop = container.offsetTop;
@@ -32,9 +36,6 @@ window.addEventListener("scroll", () => {
   // 6. Gestion du Titre (Disparaît entre 0% et 20%)
   title.style.opacity = 1 - percentage * 5;
 
-  // 7. Récupérer la position de la section suivante par rapport au haut de la fenêtre
-  const sectionTop = nextSection.getBoundingClientRect().top;
-
   // Si le haut de la section suivante est à 50px ou moins du haut de l'écran
   if (sectionTop <= 80) {
     header.classList.add("scrolled-past");
@@ -42,5 +43,33 @@ window.addEventListener("scroll", () => {
   } else {
     header.classList.remove("scrolled-past");
     blackMenu.classList.remove("black-cahr");
+  }
+
+  // 7. Ecouter l'événement de scroll sur la zone du slider
+  console.log("Slider chargé :", sliderViewport, imageStack);
+  if (sliderViewport) {
+    sliderViewport.addEventListener(
+      "wheel",
+      (event) => {
+        // Empêche la page entière de bouger
+        event.preventDefault();
+
+        if (event.deltaY > 0) {
+          currentIndex++;
+        } else {
+          currentIndex--;
+        }
+
+        // Limitation de l'index
+        currentIndex = Math.max(0, Math.min(currentIndex, images.length - 1));
+
+        // Calcul et application du mouvement
+        const imageHeight = sliderViewport.offsetHeight;
+        imageStack.style.transform = `translateY(${
+          -currentIndex * imageHeight
+        }px)`;
+      },
+      { passive: false }
+    );
   }
 });
