@@ -140,67 +140,160 @@ body { margin: 0; font-family: sans-serif; }
     background-color: rgba(0, 0, 0, 0.2); 
 }
 
-/* La section qui suit l'œuvre */
-.content-section {
-    min-height: 100vh;
+/** SECTION CAROUSEL */
+.carousel-container {
+    height: 100vh;
     background: rgb(255, 255, 255);
-    padding: 100px 50px;
+    margin: 10px 50px;
     position: relative;
     z-index: 20; /* Pour passer par-dessus le container sticky à la fin */
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
-.content-wrapper {
-    display: flex;
-    max-width: 1200px;
-    gap: 50px;
+/* ZONE TEXTE */
+.title {
+    padding-top: 50px;
+    letter-spacing: 2px;
+    font-size: 38px;
+    text-align: center;
+    span {
+        font-size: 46px;
+        color: #a10000;
+        font-weight: 800;
+        font-style: italic;
+    }
 }
-.leftside {
-    flex: 1;
-    padding-right: 20px;
-}
-
-.rightside {
-    flex: 1;
+.carousel-text {
+    width: 40%;
+    margin: 0 10px;
+    font-family: "Montserrat", sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    position: relative;
-    /* padding: 0 10px; */
+    /* flex: 1; */
+    gap: 20px;
+    .timeline {
+        width: 100%;
+        margin: 0 20px 0 0;
+        .city {
+            border: 1px solid;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            font-size: 30px;
+            letter-spacing: 15px;
+            text-align: center;
+            span {
+                font-size: 18px;
+            }
+        }
+        ul {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 20px;
+            li {
+                list-style: none;
+                font-size: 24px;
+                .date {
+                    font-size: 34px;
+                    letter-spacing: 10px;
+                }
+            }
+            li:nth-child(1) {
+                margin-right: 100px;
+            }
+            li:nth-child(2) {
+                margin-right: 40px;
+            }
+        }
+    }
+    p {
+        margin: 0px 10px 10px 0px;
+        line-height: 28px;
+        text-align: justify;
+    }
+    img {
+        margin-top: 10px;
+    }
 }
 
-.image-slider-viewport {
-    width: 100%;
-    height: 60vh;
+/* ZONE CAROUSEL */
+.carousel{
+    margin: 10px auto;
+    width: 60%;
+    border: 5px solid red;
+    display: flex;
+    /* overflow-x: auto; */
+    /* gap: 1em; */
     overflow: hidden;
     position: relative;
-    border: 1px solid #eee;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
 }
-
-.image-stack {
+.carousel::-webkit-scrollbar {
+    /* pour enlever la barre de défilement horizontale */
+    display: none;
+}
+.group {
     display: flex;
-    flex-direction: column;
-    width: 100%;
-    /* object-fit: cover;
-    flex-shrink: 0; */
-    transition: transform 0.5s ease-in-out;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    animation: spin 50s infinite linear;
+    padding-right: 1em;
+    flex-shrink: 0;
 }
-
-.image-stack img {
+.card {
+    height: 600px;
+    font-size: 3rem;
+    border: 1px solid black;
+    border-radius: 0.2em;
+    text-align: center;
+    align-content: center;
+    overflow: hidden;
+}
+.card img {
     width: 100%;
-    height: 60vh; /* Doit correspondre à la hauteur de image-slider-viewport */
-    object-fit: cover; /* Pour ne pas déformer vos œuvres */
+    height: 100%;
+    object-fit: cover;
     display: block;
 }
+.card .what-is-it {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+    height: 400px;
+}
+.cart .describ {
+    flex: 0 0 600px;
+    border: 2px solid #ccc;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.card .describ {
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: break-word;
 
-/* Pour la souris */
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+@keyframes spin {
+    from {translate: 0;}
+    to {translate: -100%;}
+}
+
+
+/** Picto animé de la souris QUE JE VEUX GARDER ! */
 .mouse-scroll-icon {
     position: absolute;
-    bottom: -50px;
+    bottom: 50px;
     width: 25px;
     height: 40px;
     border: 2px solid #333;
@@ -229,6 +322,3 @@ body { margin: 0; font-family: sans-serif; }
 
 
 
-/* .rightside img { 
-    width: 100%;
-} */
